@@ -33,7 +33,9 @@
             </a>
         </span>
         <span class="float-right">
-            <i class="fas fa-cog fa-lg"></i>
+            <a href="/logout">
+                <i class="fas fa-sign-out-alt"></i>
+            </a>
         </span>
     </nav>
     <div>

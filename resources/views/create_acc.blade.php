@@ -1,49 +1,48 @@
 @extends('layouts.master')
 
-@section('title', 'Create Account')
+@section('title', 'Créer un compte')
 
 @section('content')
-    <br>
-    <h2 style="text-align: center;">Créer votre compte</h2>
-    <br>
+    <form action="create" method="post" enctype="multipart/form-data">
+        @csrf
+        <div class="container green-background">
+            <div class="row">
+                @if (session()->get('msg'))
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
 
+                        {{ session()->get('msg') }}
 
-    <div class="container">
-        @if (session()->get('msg'))
-            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-
-                {{ session()->get('msg') }}
-
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-
-
-        @endif
-        <div class="card">
-            <div class="card-body">
-                <form action="create" method="post" enctype="multipart/form-data">
-                    @csrf
-                    <div class="row">
-                        <div class="col-md-4">
-                            <label>Pseudo</label>
-                            <input type="text" name="uname" class="form-control" required>
-                        </div>
-                        <div class="col-md-4">
-                            <label>Mail</label>
-                            <input type="text" name="uemail" class="form-control" required>
-                        </div>
-                        <div class="col-md-4">
-                            <label>Mot de passe</label>
-                            <input type="password" name="upass" class="form-control" required>
-                        </div>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
-                    <br>
-                    <button type="submit" class="btn btn-primary">Valider</button>
-                </form>
+                @endif
+            </div>
+            <div class="col-12">
+                <div class="row">
+                    <img class="welcome-logo" src="{{ asset('images/logo.svg') }}" />
+                </div>
+                <div class="form-group row justify-content-center" style="padding-top: 15%">
+                    <input type="text" name="uname" class="form-control login-input" placeholder="Nom d'utilisateur" required>
+                </div>
+                <div class="form-group row justify-content-center">
+                    <input type="text" name="uemail" class="form-control login-input" placeholder="Email" required>
+                </div>
+                <div class="form-group row justify-content-center">
+                    <input type="password" name="upass" class="form-control login-input" placeholder="Mot de passe" required>
+                </div>
+                <div class="form-group row justify-content-center" style="padding-top: 10%">
+                    <button type="submit" class="btn btn-success">Créer mon compte</button>
+                </div>
             </div>
         </div>
-    </div>
+    </form>
 
-@stop
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('.navbar').addClass("hide");
+            $('body').css("padding", 0);
+        });
+
+    </script>
+@endsection

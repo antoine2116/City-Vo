@@ -6,6 +6,7 @@ use App\Http\Controllers\RewardsController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,14 +23,18 @@ Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
 
-Route::get('/', [WelcomeController::class, 'index']);
+Route::get('/', 'LoginController@protect');
 
-Route::get('/createPost', [WelcomeController::class, 'createPost']);
+Route::get('/home', [HomeController::class, 'index']);
+
+Route::get('/welcome',[WelcomeController::class, 'index']);
+
+// Route::get('/createPost', [WelcomeController::class, 'createPost']);
+
 
 Route::get("rewards", [RewardsController::class, 'index']);
 
 Route::get("user", [UsersController::class, 'index']);
-
 
 
 Route::get('/create_account', 'LoginController@index');
@@ -40,6 +45,5 @@ Route::get('/login', 'LoginController@login');
 
 Route::post('/check','LoginController@check_user');
 
-Route::get('/welcome','LoginController@protect');
 
 Route::get('/logout','LoginController@logout');

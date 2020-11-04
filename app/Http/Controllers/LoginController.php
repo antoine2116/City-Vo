@@ -7,11 +7,13 @@ use App;
 
 class LoginController extends Controller
 {
+    // Get Créer compte
     public function index()
     {
         return view('create_acc');
     }
 
+    // POST Créer compte
     public function create(Request $r)
     {
         $name=$r->uname;
@@ -23,30 +25,37 @@ class LoginController extends Controller
         {
             return redirect('/create_account')->with('msg','Email existe déjà !');
             
-        }else{
-
-        
-
-        $login= new App\Login;
-
-        $login->name=$name;
-        $login->email=$email;
-        $login->password=$pass;
-
-        $created=$login->save();
-
-        if($created)
+        }
+        else
         {
-            return redirect('/login')->with('msg','Compte crée ! Vous pouvez vous connecter !');
+            $login= new App\Login;
+            $login->name=$name;
+            $login->email=$email;
+            $login->password=$pass;
+
+            $created=$login->save();
+
+            if($created)
+            {
+                $password=password_verify($r->$pass,PASSWORD_DEFAULT);
+                $session = App\Login::where('email',$email)->where('password',$password)->get();
+                if(count($session)>0)
+                {
+                    $r->session()->put('user_id',$session[0]->id);
+                    $r->session()->put('user_name',$session[0]->name);
+                    return redirect('/home');
+                }
+            }
         }
     }
-    }
 
+    // Get Login
     public function login($value='')
     {
         return view('login');
     }
 
+    // Post Login
     public function check_user(Request $r)
     {
         $email=$r->uemail;
@@ -59,38 +68,35 @@ class LoginController extends Controller
             $r->session()->put('user_id',$session[0]->id);
             $r->session()->put('user_name',$session[0]->name);
 
-            return redirect('/welcome');
-        }else{
-
+            return redirect('/home');
+        }
+        else
+        {
             return redirect('/login')->with('msg','Mail ou mot de passe incorrect');
-
         }
     }
 
-
+    // Check si un user est connecté
     public function protect(Request $r)
     {
         if($r->session()->get('user_id')== "")
         {
-            return redirect('/login');
-        }else{
-            $username=$r->session()->get('user_name');
-            $userid=$r->session()->get('user_id');
-
-            $capsule = array(
-                'username' => $username,
-                'userid'   => $userid
-            );
-
-            return view('protect')->with($capsule);
+            return redirect('/welcome');
+        }
+        else
+        {
+            return redirect('/home');
         }
     }
 
+    // Déconnection
     public function logout(Request $r)
     {
         $r->session()->forget('user_id');
         $r->session()->forget('user_name');
 
-        return redirect('/login');
+        return redirect('/');
     }
+
+
 }

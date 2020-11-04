@@ -1,6 +1,6 @@
 /* Global */
 body {
-    padding: 0px 0px 50px;
+    padding: 40px 0px 50px 0px;
 }
 
 p {
@@ -212,4 +212,44 @@ p {
 .user-post-text {
     margin-left: 100px;
     float: right;
+}
+
+/* Welcome */
+.green-background {
+    height: 100%;
+    width: 100%;
+    background-color: #a8ffc0;
+}
+
+.welcome-logo {
+    height: 200px;
+    width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 25%;
+}
+
+.welcome-title {
+    font-weight: bold;
+    color: #0a8c26;
+}
+
+.welcone-login {
+    color: #3b3b3b;
+    font-size: 0.9em;
+    text-decoration: underline;
+}
+
+/* login */
+.login-logo {
+    height: 150px;
+    width: 150px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 25%;
+}
+
+.login-input {
+    width: 85% !important;
+    border-color: #53c253 !important;
 }

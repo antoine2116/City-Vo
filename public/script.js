@@ -2,7 +2,6 @@
 /////////   HOME PAGE   ///////
 ///////////////////////////////
 function initialiseNavbar() {
-    $('body').css('padding-top', $('.navbar').outerHeight() + 'px')
     if ($('.fixed-top').length > 0) { // check if element exists
         var last_scroll_top = 0;
         $(window).on('scroll', function () {
