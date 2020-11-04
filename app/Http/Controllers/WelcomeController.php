@@ -15,4 +15,10 @@ class WelcomeController extends Controller
         
         return view('welcome', ['posts' => $posts]);
     }
+
+    # Get create post
+    public function createPost() 
+    {
+        return view('post');
+    }
 }

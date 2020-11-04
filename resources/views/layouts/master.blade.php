@@ -54,7 +54,7 @@
                 </a>
             </ul>
             <ul class="nav-item">
-                <a href="/post" id="btn-camera">
+                <a href="/createPost" id="btn-camera">
                     <span class="fa-stack">
                         <i class="fas fa-circle fa-stack-2x" style="color: #188035"></i>
                         <i class="fas fa-camera fa-stack-1x fa-inverse"></i>
