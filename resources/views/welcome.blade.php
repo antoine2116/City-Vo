@@ -1,37 +1,29 @@
 @extends('layouts.master')
 
-@section('title', 'Accueil')
+@section('title', '')
 
 @section('content')
-    <div class="container">
-        @for ($i = 0; $i < sizeof($posts); $i++)
-            <div class="row">
-                <div class="container-feed">
-                    <div class="float-left">
-                        <p class="title-feed font-weight-bold">
-                            {{ $posts[$i]->{'title'} }} - {{ $posts[$i]->{'lieu'} }}
-                        </p>
-                    </div>
-                    <div class="float-right">
-                        <span class="votes-feed">
-                            {{ $posts[$i]->{'votes'} }}
-                        </span>
-                        <a href="#" class="btn-up-feed btn-feed">
-                            <i class="fas fa-chevron-up" style="color: #188035"></i>
-                        </a>
-                        <a href="#" class="btn-down-feed btn-feed">
-                            <i class="fas fa-chevron-down" style="color: #db2323"></i>
-                        </a>
-                    </div>
-                    <img class="img-feed" src="{{ asset('upload_file/' . $posts[$i]->{'image'}) }}" />
-                    <p class="description-feed">
-                        <span class="auteur-feed bolder">
-                            {{ $posts[$i]->{'name'} }} &bull;
-                        </span>
-                        {!! $posts[$i]->{'body'} !!}
-                    </p>
-                </div>
-            </div>
-        @endfor
+    <div class="container green-background">
+        <div class="row">
+            <img class="welcome-logo" src="{{ asset('images/logo.svg') }}" />
+        </div>
+        <div class="row justify-content-center" style="padding-top: 10%">
+            <h5 class="welcome-title">
+                Enssemle, changeons notre ville !
+            </h5>
+        </div>
+        <div class="row justify-content-center" style="padding-top: 35%">
+            <a href="/create_account" class="btn btn-success btn-lg">Créer un compte</a>
+        </div>
+        <div class="row justify-content-center pt-2">
+            <a href="/login" class="welcone-login">Déja un compte ? Connectez-vous !</a>
+        </div>
     </div>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('.navbar').addClass("hide");
+            $('body').css("padding", 0);
+        });
+    </script>
 @stop
