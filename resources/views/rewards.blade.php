@@ -20,9 +20,11 @@
             <div class="col-4 pt-1 ml-3 rank-container">
                 <div class="rank-content  pt-1">
                     <strong style="font-size: 1.2em">
-                        {{ $rank[0]->{'rank'} }}
+                        {{-- {{ $rank[0]->{'rank'} }} --}}
+                        28
                     </strong> 
-                    {{ $rank[0]->{'rank'} == 1 ? "er" : "ème" }}
+                    {{-- {{ $rank[0]->{'rank'} == 1 ? "er" : "ème" }} --}}
+                    ème
                     <i class="fas fa-trophy" style="color: #e35914"></i>
                 </div>
             </div>
@@ -77,6 +79,7 @@
                             Il vous restera ensuite
                             <span id="modale-points-restant">
                             </span>
+                            points
                         </h6>
                     </div>
                 </div>

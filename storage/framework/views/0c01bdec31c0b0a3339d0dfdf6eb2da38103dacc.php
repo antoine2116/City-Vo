@@ -19,11 +19,11 @@
             <div class="col-4 pt-1 ml-3 rank-container">
                 <div class="rank-content  pt-1">
                     <strong style="font-size: 1.2em">
-                        <?php echo e($rank[0]->{'rank'}); ?>
-
+                        
+                        28
                     </strong> 
-                    <?php echo e($rank[0]->{'rank'} == 1 ? "er" : "ème"); ?>
-
+                    
+                    ème
                     <i class="fas fa-trophy" style="color: #e35914"></i>
                 </div>
             </div>
@@ -78,6 +78,7 @@
                             Il vous restera ensuite
                             <span id="modale-points-restant">
                             </span>
+                            points
                         </h6>
                     </div>
                 </div>
