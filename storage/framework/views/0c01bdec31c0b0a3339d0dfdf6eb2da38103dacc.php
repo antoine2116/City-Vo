@@ -71,7 +71,6 @@
                 <div class="modal-footer justify-content-center">
                     <button type="button" class="btn btn-success el-init" id="btnValiderReward">Valider</button>
                     <button type="button" class="btn btn-secondary el-init" data-dismiss="modal">Annuler</button>
-
                     <button type="button" class="btn btn-info el-succes hide" data-dismiss="modal">Quitter</button>
                 </div>
             </div>
@@ -80,7 +79,6 @@
 
     <script type="text/javascript">
         initialiseModaleReward();
-
     </script>
 
 <?php $__env->stopSection(); ?>

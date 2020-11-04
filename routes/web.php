@@ -23,6 +23,8 @@ Route::group(['prefix' => 'admin'], function () {
 
 Route::get('/', [WelcomeController::class, 'index']);
 
+Route::get('/createPost', [WelcomeController::class, 'createPost']);
+
 Route::get("rewards", [RewardsController::class, 'index']);
 
 Route::get("user", [UsersController::class, 'index']);
