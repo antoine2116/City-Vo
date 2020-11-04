@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RewardsController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\WelcomeController;
+use App\Http\Controllers\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,3 +29,17 @@ Route::get('/createPost', [WelcomeController::class, 'createPost']);
 Route::get("rewards", [RewardsController::class, 'index']);
 
 Route::get("user", [UsersController::class, 'index']);
+
+
+
+Route::get('/create_account', 'LoginController@index');
+
+Route::post('/create','LoginController@create');
+
+Route::get('/login', 'LoginController@login');
+
+Route::post('/check','LoginController@check_user');
+
+Route::get('/welcome','LoginController@protect');
+
+Route::get('/logout','LoginController@logout');
