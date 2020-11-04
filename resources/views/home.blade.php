@@ -24,12 +24,7 @@
                         </a>
                     </div>
 
-                    <?php           
-                    $image_route = "storage/";
-                    $image_route .= $posts[$i]->{'image'}; 
-                    ?>
-
-                    <img class="img-feed" src= "{{ asset($image_route) }}" />
+                    <img class="img-feed" src="{{ asset('upload_file/' . $posts[$i]->{'image'}) }}" />
                     <p class="description-feed">
                         <span class="auteur-feed bolder">
                             {{ $posts[$i]->{'name'} }} &bull;
