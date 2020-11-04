@@ -12,12 +12,17 @@
             </div>
             <div class="col-4 pt-1 ml-3 points-container float-right">
                 <div class="points-content pt-1">
-                    <strong style="font-size: 1.2em">{{ $points[0]->{'points'} }}</strong> points
+                    <strong style="font-size: 1.2em" id="user-points">
+                        {{ $points[0]->{'points'} }}
+                    </strong> points
                 </div>
             </div>
             <div class="col-4 pt-1 ml-3 rank-container">
                 <div class="rank-content  pt-1">
-                    <strong style="font-size: 1.2em">{{ $rank[0]->{'rank'} }}</strong> ème
+                    <strong style="font-size: 1.2em">
+                        {{ $rank[0]->{'rank'} }}
+                    </strong> 
+                    {{ $rank[0]->{'rank'} == 1 ? "er" : "ème" }}
                     <i class="fas fa-trophy" style="color: #e35914"></i>
                 </div>
             </div>
@@ -36,7 +41,12 @@
             <img class="reward-img" src="{{ asset('images/rewards/' . $rewards[$i]->{'image'}) }}" />
 
             <div class="reward-text">
-                <strong>{{ $rewards[$i]->{'points'} }} POINTS</strong>
+                <strong>
+                    <span class="reward-points">
+                        {{ $rewards[$i]->{'points'} }} 
+                    </span>
+                    POINTS
+                </strong>
             </div>
     </div>
     @if ($i % 2)
@@ -60,9 +70,13 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        Êtes-vous sûr(e) de vouloir 100 points dépenser vos points pour :
+                        Êtes-vous sûr(e) de vouloir dépenser
+                         <span id="modale-points-requis" class="font-weight-bold"></span>
+                        points pour obtenir votre récompense ?
                         <h6 class="text-center pt-1 font-weight-bold">
-                            Reward quelconque
+                            Il vous restera ensuite
+                            <span id="modale-points-restant">
+                            </span>
                         </h6>
                     </div>
                 </div>
@@ -83,7 +97,6 @@
 
     <script type="text/javascript">
         initialiseModaleReward();
-
     </script>
 
 @endsection

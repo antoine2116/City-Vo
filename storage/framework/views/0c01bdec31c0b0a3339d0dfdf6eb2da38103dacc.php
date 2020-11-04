@@ -10,12 +10,20 @@
             </div>
             <div class="col-4 pt-1 ml-3 points-container float-right">
                 <div class="points-content pt-1">
-                    <strong style="font-size: 1.2em">290</strong> points
+                    <strong style="font-size: 1.2em" id="user-points">
+                        <?php echo e($points[0]->{'points'}); ?>
+
+                    </strong> points
                 </div>
             </div>
             <div class="col-4 pt-1 ml-3 rank-container">
                 <div class="rank-content  pt-1">
-                    <strong style="font-size: 1.2em">33</strong> ème
+                    <strong style="font-size: 1.2em">
+                        <?php echo e($rank[0]->{'rank'}); ?>
+
+                    </strong> 
+                    <?php echo e($rank[0]->{'rank'} == 1 ? "er" : "ème"); ?>
+
                     <i class="fas fa-trophy" style="color: #e35914"></i>
                 </div>
             </div>
@@ -23,22 +31,29 @@
         <hr />
 
         
-        <?php for($i = 0; $i < 4; $i++): ?>
-            <div class="form-group row justify-content-center">
-                <div class="reward-container float-left mr-1">
-                    <img class="reward-img" src="<?php echo e(asset('images/musee-aquitaine.jpg')); ?>" />
-                    <div class="reward-text">
-                        <strong>100 POINTS</strong>
-                    </div>
-                </div>
+        <?php for($i = 0; $i < sizeof($rewards); $i++): ?>
+            <?php if($i % 2): ?>
                 <div class="reward-container float-right ml-1">
-                    <img class="reward-img" src="<?php echo e(asset('images/restaurant-1.jpg')); ?>" />
-                    <div class="reward-text">
-                        <strong>150 POINTS</strong>
-                    </div>
-                </div>
+                <?php else: ?>
+                    <div class="form-group row justify-content-center">
+                        <div class="reward-container float-left mr-1">
+            <?php endif; ?>
+
+            <img class="reward-img" src="<?php echo e(asset('images/rewards/' . $rewards[$i]->{'image'})); ?>" />
+
+            <div class="reward-text">
+                <strong>
+                    <span class="reward-points">
+                        <?php echo e($rewards[$i]->{'points'}); ?> 
+                    </span>
+                    POINTS
+                </strong>
             </div>
-        <?php endfor; ?>
+    </div>
+    <?php if($i % 2): ?>
+        </div>
+    <?php endif; ?>
+    <?php endfor; ?>
     </div>
 
 
@@ -56,9 +71,13 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        Êtes-vous sûr(e) de vouloir 100 points dépenser vos points pour :
+                        Êtes-vous sûr(e) de vouloir dépenser
+                         <span id="modale-points-requis" class="font-weight-bold"></span>
+                        points pour obtenir votre récompense ?
                         <h6 class="text-center pt-1 font-weight-bold">
-                            Reward quelconque
+                            Il vous restera ensuite
+                            <span id="modale-points-restant">
+                            </span>
                         </h6>
                     </div>
                 </div>

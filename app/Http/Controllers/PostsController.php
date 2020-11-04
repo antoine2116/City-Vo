@@ -25,7 +25,7 @@ class PostsController extends Controller
         $description=$r->description;
 
         $r->validate([
-            'image'=>'required|mimes:png,jpeg,jpg|max:2048'
+            'image'=>'required|mimes:png,jpeg,jpg|max:10240'
             ]);
 
         $imageName = time().'.'.$r->image->extension();
