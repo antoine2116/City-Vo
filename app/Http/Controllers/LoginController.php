@@ -24,22 +24,19 @@ class LoginController extends Controller
             return redirect('/create_account')->with('msg','Email existe déjà !');
             
         }else{
+            $login= new App\Login;
 
-        
+            $login->name=$name;
+            $login->email=$email;
+            $login->password=$pass;
 
-        $login= new App\Login;
+            $created=$login->save();
 
-        $login->name=$name;
-        $login->email=$email;
-        $login->password=$pass;
-
-        $created=$login->save();
-
-        if($created)
-        {
-            return redirect('/login')->with('msg','Compte crée ! Vous pouvez vous connecter !');
+            if($created)
+            {
+                return redirect('/login')->with('msg','Compte crée ! Vous pouvez vous connecter !');
+            }
         }
-    }
     }
 
     public function login($value='')

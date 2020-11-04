@@ -12,12 +12,12 @@
             </div>
             <div class="col-4 pt-1 ml-3 points-container float-right">
                 <div class="points-content pt-1">
-                    <strong style="font-size: 1.2em">290</strong> points
+                    <strong style="font-size: 1.2em">{{ $points[0]->{'points'} }}</strong> points
                 </div>
             </div>
             <div class="col-4 pt-1 ml-3 rank-container">
                 <div class="rank-content  pt-1">
-                    <strong style="font-size: 1.2em">33</strong> ème
+                    <strong style="font-size: 1.2em">{{ $rank[0]->{'rank'} }}</strong> ème
                     <i class="fas fa-trophy" style="color: #e35914"></i>
                 </div>
             </div>
@@ -25,22 +25,24 @@
         <hr />
 
         {{-- Liste Rewards --}}
-        @for ($i = 0; $i < 4; $i++)
-            <div class="form-group row justify-content-center">
-                <div class="reward-container float-left mr-1">
-                    <img class="reward-img" src="{{ asset('images/musee-aquitaine.jpg') }}" />
-                    <div class="reward-text">
-                        <strong>100 POINTS</strong>
-                    </div>
-                </div>
+        @for ($i = 0; $i < sizeof($rewards); $i++)
+            @if ($i % 2)
                 <div class="reward-container float-right ml-1">
-                    <img class="reward-img" src="{{ asset('images/restaurant-1.jpg') }}" />
-                    <div class="reward-text">
-                        <strong>150 POINTS</strong>
-                    </div>
-                </div>
+                @else
+                    <div class="form-group row justify-content-center">
+                        <div class="reward-container float-left mr-1">
+            @endif
+
+            <img class="reward-img" src="{{ asset('images/rewards/' . $rewards[$i]->{'image'}) }}" />
+
+            <div class="reward-text">
+                <strong>{{ $rewards[$i]->{'points'} }} POINTS</strong>
             </div>
-        @endfor
+    </div>
+    @if ($i % 2)
+        </div>
+    @endif
+    @endfor
     </div>
 
 
@@ -81,6 +83,7 @@
 
     <script type="text/javascript">
         initialiseModaleReward();
+
     </script>
 
 @endsection

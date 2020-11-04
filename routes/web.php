@@ -6,6 +6,7 @@ use App\Http\Controllers\RewardsController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PostsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,3 +44,9 @@ Route::post('/check','LoginController@check_user');
 Route::get('/welcome','LoginController@protect');
 
 Route::get('/logout','LoginController@logout');
+
+
+
+Route::get('/createPost','PostsController@index');
+
+Route::post('/createAPost','PostsController@createAPost');
