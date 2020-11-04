@@ -1,8 +1,6 @@
 <?php $__env->startSection('title', 'Mon profil'); ?>
 
 <?php $__env->startSection('content'); ?>
-
-
     <div class="card">
         <form action="" method="post">
             <div class="row pt-1 pl-1 pb-1">
