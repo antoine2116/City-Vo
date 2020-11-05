@@ -52,6 +52,3 @@ Route::get('/logout','LoginController@logout');
 Route::get('/createPost','PostsController@index');
 
 Route::post('/createAPost','PostsController@createAPost');
-
-
-Route::post("/updateProfil", [UsersController::class, 'updateProfil']);
