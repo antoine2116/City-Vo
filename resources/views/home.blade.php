@@ -39,18 +39,24 @@
                     <div class="container-img-feed">
                         <img class="img-feed" src="{{ asset('upload_file/' . $posts[$i]->{'image'}) }}" />
                     </div>
-                    <p class="categorie-feed">
+                    <div class="categorie-feed">
                         <span class="label-categorie-feed" style="color: #1e2749">
                         </span>
                         <span class="float-right" style="font-size: 1.5em">
-                            <a href="/comments" style="color: #106929 !important;">
-                                <i class="fas fa-comments pr-3"></i>
-                            </a>
-                            <a class="btnShare" style="color: #106929 !important;">
-                                <i class="fas fa-share"></i>
-                            </a>
+
+                            <form action="homeToComments" method="post" enctype="multipart/form-data">
+                                @csrf
+                                <input type="hidden" name="post_id" value="{{ $posts[$i]->{'id'} }}" />
+                                <a href='#' onclick='this.parentNode.submit(); return false;'
+                                    style="color: #106929 !important;">
+                                    <i class="fas fa-comments pr-3"></i>
+                                </a>
+                                <a class="btnShare" style="color: #106929 !important;">
+                                    <i class="fas fa-share"></i>
+                                </a>
+                            </form>
                         </span>
-                    </p>
+                    </div>
                     <p class="description-feed">
                         <span class="auteur-feed bolder">
                             {{ $posts[$i]->{'name'} }} &bull;
@@ -80,6 +86,7 @@
             var lastIdCtg = sessionStorage.getItem("idCtg");
             $('#selectCategorie').val(lastIdCtg);
         });
+
     </script>
 
 @stop
