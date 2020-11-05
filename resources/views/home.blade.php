@@ -19,6 +19,7 @@
                 <div class="container-feed">
                     <div class="container-header-feed">
                         <div class="float-left">
+                            <input type="hidden" class="idCtg-feed" value="{{ $posts[$i]->{'category_id'} }}" />
                             <p class="title-feed font-weight-bold">
                                 {{ $posts[$i]->{'title'} }} - {{ $posts[$i]->{'lieu'} }}
                             </p>
@@ -38,16 +39,23 @@
                     <div class="container-img-feed">
                         <img class="img-feed" src="{{ asset('upload_file/' . $posts[$i]->{'image'}) }}" />
                     </div>
+                    <p class="categorie-feed">
+                        <span class="label-categorie-feed" style="color: #1e2749">
+                        </span>
+                        <span class="float-right" style="font-size: 1.5em">
+                            <a href="/comments" style="color: #106929 !important;">
+                                <i class="fas fa-comments pr-3"></i>
+                            </a>
+                            <a class="btnShare" style="color: #106929 !important;">
+                                <i class="fas fa-share"></i>
+                            </a>
+                        </span>
+                    </p>
                     <p class="description-feed">
                         <span class="auteur-feed bolder">
                             {{ $posts[$i]->{'name'} }} &bull;
                         </span>
                         {!! $posts[$i]->{'body'} !!}
-                    </p>
-                    <p>
-                        <a href="/comments" class="comments-feed">
-                            <i class="fas fa-comments"></i> Voir les commentaires
-                        </a>
                     </p>
                 </div>
             </div>
@@ -56,8 +64,10 @@
 
     <script type="text/javascript">
         $(document).ready(function() {
+            // Couleur des votes
             initialiseSpanVotes();
-
+            initialiseLabelCategory();
+            initialiseButtonShare();
             $('#selectCategorie').change(function() {
                 // On met en session l'id
                 var idCtg = $(this).val();
@@ -67,6 +77,7 @@
                 window.location.replace(url);
             });
 
+            // On récupère l'id de la session pour initialiser le select
             var lastIdCtg = sessionStorage.getItem("idCtg");
             $('#selectCategorie').val(lastIdCtg);
         });

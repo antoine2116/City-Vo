@@ -27,7 +27,7 @@
             <div class="row">
                 <div class="img-container">
                     <div class="init-preview-img">
-                        <input id="ipt-image" name="image" class="hide" type="file" required/>
+                        <input id="ipt-image" name="image" class="hide" type="file" required />
                         <i class="fas fa-cloud-upload-alt fa-5x" id="img-icone"></i>
                         <p id="img-text">
                             Cliquer pour importer une image
@@ -42,12 +42,12 @@
             <div class="col-12">
                 <div class="form-group row">
                     <div class="col-12">
-                        <input type="text" name="titre" class="form-control" placeholder="Titre" required/>
+                        <input type="text" name="titre" class="form-control" placeholder="Titre" required />
                     </div>
                 </div>
                 <div class="form-group row">
                     <div class="col-12">
-                        <select name="category" class="form-control" placeholder="Sélectionner une catégorie">
+                        <select name="category" class="form-control width-border" placeholder="Sélectionner une catégorie">
                             @for ($i = 0; $i < sizeof($categories); $i++)
                                 <option name="category" value={{ $categories[$i]->{'id'} }}>
                                     {{ $categories[$i]->{'name'} }}
@@ -58,7 +58,16 @@
                 </div>
                 <div class="form-group row">
                     <div class="col-12">
-                        <input type="text" name="localisation" class="form-control" placeholder="Localisation" required/>
+                        <div class="input-group mb-3">
+                            <input type="text" id="iptLoc" name="localisation" class="form-control" placeholder="Localisation"
+                                required />
+                            <div class="input-group-append">
+                                <button class="btn btn-info" type="button" id="btnLoc">
+                                    <i class="fas fa-compass"></i>
+                                </button>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
                 <div class="form-group row">
@@ -75,11 +84,13 @@
             </div>
         </form>
     </div>
-    
+
     <script type="text/javascript">
         $(document).ready(function() {
             initialiseImportImage();
+            iniitaliseLocation();
         });
+
     </script>
 
 @endsection

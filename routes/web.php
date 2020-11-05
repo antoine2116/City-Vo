@@ -8,6 +8,7 @@ use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostsController;
+use App\Http\Controllers\MapController;
 
 /*
 |--------------------------------------------------------------------------
@@ -53,3 +54,5 @@ Route::post('/createAPost','PostsController@createAPost');
 Route::get("/comments", "PostsController@comments");
 
 Route::post("/updateProfil", [UsersController::class, 'updateProfil']);
+
+Route::get("map", [MapController::class, 'index']);
