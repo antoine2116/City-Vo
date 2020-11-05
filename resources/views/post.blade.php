@@ -3,19 +3,15 @@
 @section('title', 'Publication')
 
 @section('content')
-
     <div class="container">
-        
         @if (session()->get('success'))
             <div class="alert alert-success alert-dismissible fade show" role="alert">
                 {{ session()->get('success') }}
-
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
         @endif
-
         @if (session()->get('danger'))
             <div class="alert alert-danger alert-dismissible fade show" role="alert">
                 {{ session()->get('danger') }}
@@ -32,8 +28,8 @@
                 <div class="img-container">
                     <div class="init-preview-img">
                         <input id="ipt-image" name="image" class="hide" type="file" />
-                        <i class="fas fa-cloud-upload-alt fa-5x"></i>
-                        <p>
+                        <i class="fas fa-cloud-upload-alt fa-5x" id="img-icone"></i>
+                        <p id="img-text">
                             Cliquer pour importer une image
                         </p>
                     </div>
@@ -79,11 +75,11 @@
             </div>
         </form>
     </div>
+    
     <script type="text/javascript">
         $(document).ready(function() {
             initialiseImportImage();
         });
-
     </script>
 
 @endsection

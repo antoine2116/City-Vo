@@ -17,12 +17,12 @@ class RewardsController extends Controller
         $request .= ";";
         $points = DB::select($request, [1]);
 
-        $request_rank = "SELECT * FROM (SELECT id,@points := @points + 1 AS rank FROM users p, (SELECT @points := 0) r ORDER BY points DESC ) t WHERE id=";
-        $request_rank .= $id;
-        $request_rank .= ";";
+        // $request_rank = "SELECT * FROM (SELECT id,@points := @points + 1 AS rank FROM users p, (SELECT @points := 0) r ORDER BY points DESC ) t WHERE id=";
+        // $request_rank .= $id;
+        // $request_rank .= ";";
         
-        $rank = DB::select($request_rank, [1]);
+        // $rank = DB::select($request_rank, [1]);
 
-        return view('rewards',['rewards' => $rewards,'points'=>$points,'rank'=>$rank]);
+        return view('rewards',['rewards' => $rewards,'points'=>$points/*,'rank'=>$rank*/]);
     }
 }

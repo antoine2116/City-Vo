@@ -4,7 +4,7 @@ body {
 }
 
 p {
-    font-size: 0.7em;
+    font-size: 0.85em;
     padding: 4px;
     margin-bottom: 5px !important;
 }
@@ -22,12 +22,12 @@ p {
 .navbar.fixed-top {
     background-color: #24a348;
     height: 40px;
-    color: #e6e6e6;
+    color: white;
     font-weight: bold;
 }
 
 .navbar.fixed-top a {
-    color: #e6e6e6;
+    color: white;
     text-decoration: none;
 }
 
@@ -41,7 +41,7 @@ p {
  /* Navbar bottom */
 .navbar.fixed-bottom {
     background-color: #ebebeb;
-    z-index: 0;
+    bottom: -1;
 }
 
 .navbar.fixed-bottom > div > .nav-item > a > i {
@@ -49,26 +49,38 @@ p {
     font-size: 1.5em;
 }
 
+.nav-icone-sm {
+    padding-top: 4%
+}
+
 /* Feed */
 
-.img-feed {
-    height: 300px;
+.container-img-feed 
+{
     width: 100%;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 10px;
+    height: 400px;
+    overflow: hidden;
+    position: relative;
+}
+.img-feed{
+    position:absolute;
+    left: -50%;
+    right: -50%;
+    top: -50%;
+    bottom: -50%;
+    margin: auto;
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: cover;
 }
 
 .container-feed {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    background-color: #e3e3e3;
+    background-color: #f5f5f5;
     width: 100%;
 }
-
-
 
 .auteur-feed {
     font-weight: bold;
@@ -88,10 +100,18 @@ p {
 }
 
 .votes-feed {
-    font-size: 0.7em;
+    font-size: 1em;
     padding-right: 10px;
-    color: #188035;
     font-weight: bold;
+}
+
+.votes-icone-feed {
+    padding-top: 8px;
+}
+
+.title-feed {
+    padding-top: 8px !important;
+    font-size : 1em;
 }
 
 /* Rewards */
@@ -218,7 +238,7 @@ p {
 .green-background {
     height: 100%;
     width: 100%;
-    background-color: #a8ffc0;
+    background-color: #e4ffde;
 }
 
 .welcome-logo {

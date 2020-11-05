@@ -43,32 +43,32 @@
     </div>
 
     
-    <nav class="navbar fixed-bottom justify-content-center">
+    <nav class="navbar fixed-bottom justify-content-center pt-1 pb-1 mb-0 mt-2">
         <div class="d-flex">
-            <ul class="nav-item m-0 pl-0">
+            <ul class="nav-item m-0 pl-0 pr-4 nav-icone-sm">
                 <a href="/">
                     <i class="fas fa-home"></i>
                 </a>
             </ul>
-            <ul class="nav-item m-0">
+            <ul class="nav-item m-0 nav-icone-sm">
                 <a href="/rewards">
                     <i class="fas fa-gift"></i>
                 </a>
             </ul>
-            <ul class="nav-item">
+            <ul class="nav-item m-0">
                 <a href="/createPost" id="btn-camera">
-                    <span class="fa-stack">
+                    <span class="fa-stack" style="font-size: 1.6em">
                         <i class="fas fa-circle fa-stack-2x" style="color: #188035"></i>
                         <i class="fas fa-camera fa-stack-1x fa-inverse"></i>
                     </span>
                 </a>
             </ul>
-            <ul class="nav-item m-0">
+            <ul class="nav-item m-0 nav-icone-sm">
                 <a href="/map">
                     <i class="fas fa-map-marker-alt"></i>
                 </a>
             </ul>
-            <ul class="nav-item m-0">
+            <ul class="nav-item m-0 nav-icone-sm" style="padding-left: 60px">
                 <a href="/user">
                     <i class="fas fa-user-alt"></i>
                 </a>
