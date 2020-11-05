@@ -27,7 +27,7 @@
             <div class="row">
                 <div class="img-container">
                     <div class="init-preview-img">
-                        <input id="ipt-image" name="image" class="hide" type="file" />
+                        <input id="ipt-image" name="image" class="hide" type="file" required/>
                         <i class="fas fa-cloud-upload-alt fa-5x" id="img-icone"></i>
                         <p id="img-text">
                             Cliquer pour importer une image
@@ -42,7 +42,7 @@
             <div class="col-12">
                 <div class="form-group row">
                     <div class="col-12">
-                        <input type="text" name="titre" class="form-control" placeholder="Titre" />
+                        <input type="text" name="titre" class="form-control" placeholder="Titre" required/>
                     </div>
                 </div>
                 <div class="form-group row">
@@ -58,13 +58,13 @@
                 </div>
                 <div class="form-group row">
                     <div class="col-12">
-                        <input type="text" name="localisation" class="form-control" placeholder="Localisation" />
+                        <input type="text" name="localisation" class="form-control" placeholder="Localisation" required/>
                     </div>
                 </div>
                 <div class="form-group row">
                     <div class="col-12">
                         <textarea type="text" name="description" class="form-control" rows=4 placeholder="Description"
-                            style="resize: none;"></textarea>
+                            style="resize: none;" required></textarea>
                     </div>
                 </div>
                 <div class="form-group row">
