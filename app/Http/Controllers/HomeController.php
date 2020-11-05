@@ -11,7 +11,7 @@ class HomeController extends Controller
     {
         $categories = DB::select('SELECT * FROM categories', [1]);
         if ($id == null) {
-            $posts = DB::select('SELECT title,votes,image,body,lieu,name,posts.id
+            $posts = DB::select('SELECT title,votes,image,body,lieu,name,category_id,posts.id
             FROM posts 
             INNER JOIN users 
             WHERE posts.author_id = users.id 
