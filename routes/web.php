@@ -52,4 +52,9 @@ Route::post('/createAPost','PostsController@createAPost');
 
 Route::get("/comments", "PostsController@comments");
 
+Route::post("/homeToComments", "PostsController@homeToComments");
+Route::post("/home/homeToComments", "PostsController@homeToComments");
+
 Route::post("/updateProfil", [UsersController::class, 'updateProfil']);
+
+Route::post("/addComment", "PostsController@addComment");

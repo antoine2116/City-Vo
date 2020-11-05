@@ -34,18 +34,19 @@ class UsersController extends Controller
 
         $name=$r->name;
         $email=$r->email;
-    
-
+      
         $check_name=App\Login::where('name',$name)->get();
-        if(count($check_name)>0)
-        {
-            return redirect('/user')->with('msg','Pseudo existe déjà !');
-        }
         $check_email=App\Login::where('email',$email)->get();
+        
         if(count($check_email)>0)
         {
             return redirect('/user')->with('msg','Email existe déjà !');    
         }
+        if(count($check_name)>0)
+        {
+            return redirect('/user')->with('msg','Pseudo existe déjà !');    
+        }
+        
 
         $affected = DB::table('users')
               ->where('id', $id)

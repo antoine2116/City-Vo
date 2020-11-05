@@ -45,9 +45,12 @@
                         {!! $posts[$i]->{'body'} !!}
                     </p>
                     <p>
-                        <a href="/comments" class="comments-feed">
-                            <i class="fas fa-comments"></i> Voir les commentaires
-                        </a>
+                    <form action="homeToComments" method="post" class="comments-feed" enctype="multipart/form-data">
+                        @csrf
+                        <i class="fas fa-comments"></i>
+                        <input type="hidden" name="post_id" value="{{ $posts[$i]->{'id'} }}" />
+                        <a href='#' onclick='this.parentNode.submit(); return false;'>Voir les commentaires</a>
+                    </form>
                     </p>
                 </div>
             </div>
