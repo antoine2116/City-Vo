@@ -40,11 +40,10 @@
                         <img class="img-feed" src="{{ asset('upload_file/' . $posts[$i]->{'image'}) }}" />
                     </div>
                     <div class="categorie-feed">
-                        <span class="label-categorie-feed" style="color: #1e2749">
+                        <span class="label-categorie-feed pl-1 pt-2" style="color: #1e2749">
                         </span>
                         <span class="float-right" style="font-size: 1.5em">
-
-                            <form action="homeToComments" method="post" enctype="multipart/form-data">
+                            <form action="homeToComments" method="post" enctype="multipart/form-data" class="m-0 pr-2">
                                 @csrf
                                 <input type="hidden" name="post_id" value="{{ $posts[$i]->{'id'} }}" />
                                 <a href='#' onclick='this.parentNode.submit(); return false;'
@@ -57,7 +56,7 @@
                             </form>
                         </span>
                     </div>
-                    <p class="description-feed">
+                    <p class="description-feed pt-3">
                         <span class="auteur-feed bolder">
                             {{ $posts[$i]->{'name'} }} &bull;
                         </span>

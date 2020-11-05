@@ -5,31 +5,32 @@
 @section('content')
     <div class="col-12 pt-1">
         {{-- Infos Profil --}}
-        <div class="row">
+        <div class="row pt-1">
             <div class="col-2 pr-2">
                 <img class="avatar"
-                    src="https://www.benouaiche.com/wp-content/uploads/2018/12/homme-medecine-chirurgie-esthetique-dr-benouaiche-paris.jpg" />
+                    src="{{ asset('images/users/default.png') }}" />
             </div>
-            <div class="col-4 pt-1 ml-3 points-container float-right">
+            <div class="col-4 pt-1 ml-3 points-container">
                 <div class="points-content pt-1">
                     <strong style="font-size: 1.2em" id="user-points">
                         {{ $points[0]->{'points'} }}
                     </strong> points
                 </div>
             </div>
-            <div class="col-4 pt-1 ml-3 rank-container">
+            <div class="col-4 pt-1 ml-3 rank-container float-right">
                 <div class="rank-content  pt-1">
                     <strong style="font-size: 1.2em">
                         {{-- {{ $rank[0]->{'rank'} }} --}}
                         28
-                    </strong> 
-                    {{-- {{ $rank[0]->{'rank'} == 1 ? "er" : "ème" }} --}}
+                    </strong>
+                    {{-- {{ $rank[0]->{'rank'} == 1 ? 'er' : 'ème' }}
+                    --}}
                     ème
                     <i class="fas fa-trophy" style="color: #e35914"></i>
                 </div>
             </div>
         </div>
-        <hr />
+        <hr class="mt-2" />
 
         {{-- Liste Rewards --}}
         @for ($i = 0; $i < sizeof($rewards); $i++)
@@ -39,13 +40,14 @@
                     <div class="form-group row justify-content-center">
                         <div class="reward-container float-left mr-1">
             @endif
-
-            <img class="reward-img" src="{{ asset('images/rewards/' . $rewards[$i]->{'image'}) }}" />
+            <div class="reward-img-container">
+                <img class="reward-img" src="{{ asset('images/rewards/' . $rewards[$i]->{'image'}) }}" alt="">
+            </div>
 
             <div class="reward-text">
                 <strong>
                     <span class="reward-points">
-                        {{ $rewards[$i]->{'points'} }} 
+                        {{ $rewards[$i]->{'points'} }}
                     </span>
                     POINTS
                 </strong>
@@ -73,7 +75,7 @@
                     </div>
                     <div class="modal-body">
                         Êtes-vous sûr(e) de vouloir dépenser
-                         <span id="modale-points-requis" class="font-weight-bold"></span>
+                        <span id="modale-points-requis" class="font-weight-bold"></span>
                         points pour obtenir votre récompense ?
                         <h6 class="text-center pt-1 font-weight-bold">
                             Il vous restera ensuite
@@ -99,6 +101,7 @@
 
     <script type="text/javascript">
         initialiseModaleReward();
+
     </script>
 
 @endsection

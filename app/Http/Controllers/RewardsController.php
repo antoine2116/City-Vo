@@ -9,7 +9,7 @@ class RewardsController extends Controller
 {
     public function index()
     {
-        $rewards = DB::select('SELECT * FROM rewards', [1]);
+        $rewards = DB::select('SELECT * FROM rewards ORDER BY points', [1]);
 
         $id = session()->get('user_id');
         $request = "SELECT points FROM users WHERE id=";

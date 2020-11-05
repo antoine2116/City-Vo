@@ -31,7 +31,7 @@
             </div>
         @endif
         <div class="row">
-            <div class="card user-profil">
+            <div class="card user-profil pb-2">
                 <form action="updateProfil" method="post" enctype="multipart/form-data" class="mb-0">
                     @csrf
                     <div class="row pt-1 pl-1 pb-3">
