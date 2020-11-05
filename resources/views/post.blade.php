@@ -47,7 +47,7 @@
                 </div>
                 <div class="form-group row">
                     <div class="col-12">
-                        <select name="category" class="form-control" placeholder="Sélectionner une catégorie">
+                        <select name="category" class="form-control width-border" placeholder="Sélectionner une catégorie">
                             @for ($i = 0; $i < sizeof($categories); $i++)
                                 <option name="category" value={{ $categories[$i]->{'id'} }}>
                                     {{ $categories[$i]->{'name'} }}
@@ -58,7 +58,15 @@
                 </div>
                 <div class="form-group row">
                     <div class="col-12">
-                        <input type="text" name="localisation" class="form-control" placeholder="Localisation" required/>
+                        <div class="input-group mb-3">
+                            <input type="text" id="iptLoc" name="localisation" class="form-control" placeholder="Localisation"
+                                required />
+                            <div class="input-group-append">
+                                <button class="btn btn-info" type="button" id="btnLoc">
+                                    <i class="fas fa-compass"></i>
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="form-group row">
@@ -79,6 +87,7 @@
     <script type="text/javascript">
         $(document).ready(function() {
             initialiseImportImage();
+            iniitaliseLocation();
         });
     </script>
 

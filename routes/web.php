@@ -8,6 +8,7 @@ use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostsController;
+use App\Http\Controllers\MapController;
 
 /*
 |--------------------------------------------------------------------------

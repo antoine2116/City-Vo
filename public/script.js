@@ -17,6 +17,71 @@ function initialiseNavbar() {
     }
 }
 
+function initialiseSpanVotes() {
+    $('.container-feed').each(function () {
+        var elVotes = $(this).find(".votes-feed");
+        updateColorsSpan(elVotes);
+    });
+
+    $('.fa-arrow-circle-up').click(function () {
+        var container = $(this).closest(".container-feed");
+        var elVotes = container.find(".votes-feed");
+        var nbVotes = parseInt(elVotes.text().replace("+", ""));
+        elVotes.text(nbVotes + 1);
+        updateColorsSpan(elVotes);
+    });
+
+    $('.fa-arrow-circle-down').click(function () {
+        var container = $(this).closest(".container-feed");
+        var elVotes = container.find(".votes-feed");
+        var nbVotes = parseInt(elVotes.text().replace("+", ""));
+        elVotes.text(nbVotes - 1);
+        updateColorsSpan(elVotes);
+    });
+}
+
+function updateColorsSpan(elVotes) {
+    var nbVotes = parseInt(elVotes.text().replace("+", ""));
+    if (nbVotes > 0) {
+        elVotes.css("color", "#188035");
+        elVotes.text("+ " + nbVotes);
+    }
+    else if (nbVotes < 0) {
+        elVotes.css("color", "#db2323");
+        elVotes.text(nbVotes);
+    }
+    else if (nbVotes == 0) {
+        elVotes.css("color", "#3d1505");
+        elVotes.text(nbVotes);
+    }
+}
+
+function initialiseLabelCategory() {
+    $('.container-feed').each(function() {
+       var idCtg = parseInt($(this).find(".idCtg-feed").val());
+       var nameCtg = $('#selectCategorie option[value="'+ idCtg + '"]').text();
+       
+       $(this).find(".label-categorie-feed").text(nameCtg);
+    });
+}
+
+function initialiseButtonShare() {
+    $('.btnShare').click(function() {
+        var title = $(this).closest(".container-feed").find(".title-feed").text().trim();
+        var url = ""; //TODO
+        if (navigator.share) {
+            navigator.share({
+                title : title,
+                text : "Voici ce que j'ai trouvé sur l'application City'Vo !",
+                url : url,
+            })
+        }
+        else {
+            console.log("Partage indisponible sur ce navigateur");
+        }
+    });
+}
+
 ///////////////////////////////
 //////////  REWARD   //////////
 ///////////////////////////////
@@ -69,73 +134,48 @@ function initialiseImportImage() {
         $('#img-icone').css("color", "#24a348");
         $('#img-text').text("Image importée ! Cliquez pour en choisir une autre");
     });
+}
 
-    // // Preview de l'image
-    // $('#ipt-image').change(function () {
-    //     var input = this;
-    //     if (input.files && input.files[0]) {
-    //         var reader = new FileReader();
-    //         reader.onload = function (e) {
-    //             $('.preview-img').attr('src', e.target.result);
-    //             $('.figure-img').removeClass("hide");
-
-    //         }
-    //         reader.readAsDataURL(input.files[0]); // convert to base64 string
-    //         $('.img-container').addClass("hide");
-    //     }
-    // });
+function iniitaliseLocation() {
+    $('#btnLoc').click(function() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(fillLocation);
+        }        
+    });
+}
+function fillLocation(position) {
+    var lat = position.coords.latitude;
+    var lon = position.coords.longitude;
+    $.ajax({
+        type : 'GET',
+        url : "https://api.opencagedata.com/geocode/v1/json?q=" + lat + "+" + lon + "&key=71c3cadb8aaf4067829a9be904be4445",
+        dataType: 'jsonp',
+        success : function(response) {
+            if (response != null & response.results.length > 0) {
+                var result = response.results[0].components;
+                var address = result.house_number + " " + result.road + ", " + result.municipality;
+                $('#iptLoc').val(address);
+            }
+        },
+        error : function(response){
+            console.log(response);
+        }
+     });
 }
 
 ///////////////////////////
 ////////// USER   /////////
 ///////////////////////////
 
-function initialiseEditUser() {
-    $('#btnEditUser').click(function () {
-        $('.editable').attr("readonly", false);
-        $('#btnValiderUser').removeClass("hide");
-        $(this).addClass("hide");
+function initialiseClickPost() {
+    $('.user-post').click(function() {
+        var idPost = parseInt($(this).data("idpost"));
+        var url = "";
+        console.log("clicked !")
+        //window.location.replace(url);
     });
 }
 
-function initialiseSpanVotes() {
-    $('.container-feed').each(function () {
-        var elVotes = $(this).find(".votes-feed");
-        updateColorsSpan(elVotes);
-    });
-
-    $('.fa-arrow-circle-up').click(function () {
-        var container = $(this).closest(".container-feed");
-        var elVotes = container.find(".votes-feed");
-        var nbVotes = parseInt(elVotes.text().replace("+", ""));
-        elVotes.text(nbVotes + 1);
-        updateColorsSpan(elVotes);
-    });
-
-    $('.fa-arrow-circle-down').click(function () {
-        var container = $(this).closest(".container-feed");
-        var elVotes = container.find(".votes-feed");
-        var nbVotes = parseInt(elVotes.text().replace("+", ""));
-        elVotes.text(nbVotes - 1);
-        updateColorsSpan(elVotes);
-    });
-}
-
-function updateColorsSpan(elVotes) {
-    var nbVotes = parseInt(elVotes.text().replace("+", ""));
-    if (nbVotes > 0) {
-        elVotes.css("color", "#188035");
-        elVotes.text("+ " + nbVotes);
-    }
-    else if (nbVotes < 0) {
-        elVotes.css("color", "#db2323");
-        elVotes.text(nbVotes);
-    }
-    else if (nbVotes == 0) {
-        elVotes.css("color", "#3d1505");
-        elVotes.text(nbVotes);
-    }
-}
 
 ///////////////////////////////
 ////////// COMMENTS   /////////
