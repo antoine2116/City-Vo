@@ -51,3 +51,5 @@ Route::get('/createPost','PostsController@index');
 Route::post('/createAPost','PostsController@createAPost');
 
 Route::get("/comments", "PostsController@comments");
+
+Route::post("/updateProfil", [UsersController::class, 'updateProfil']);
