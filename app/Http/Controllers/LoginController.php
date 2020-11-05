@@ -43,7 +43,7 @@ class LoginController extends Controller
                 {
                     $r->session()->put('user_id',$session[0]->id);
                     $r->session()->put('user_name',$session[0]->name);
-                    return redirect('/home');
+                    return view('/presentation');
                 }
             }
         }

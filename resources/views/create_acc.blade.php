@@ -43,6 +43,5 @@
             $('.navbar').addClass("hide");
             $('body').css("padding", 0);
         });
-
     </script>
 @endsection

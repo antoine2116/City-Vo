@@ -26,12 +26,9 @@ Route::group(['prefix' => 'admin'], function () {
 
 Route::get('/', 'LoginController@protect');
 
-Route::get('/home', [HomeController::class, 'index']);
+Route::get('/home/{id?}', [HomeController::class, 'index']);
 
 Route::get('/welcome',[WelcomeController::class, 'index']);
-
-// Route::get('/createPost', [WelcomeController::class, 'createPost']);
-
 
 Route::get("rewards", [RewardsController::class, 'index']);
 
@@ -52,3 +49,5 @@ Route::get('/logout','LoginController@logout');
 Route::get('/createPost','PostsController@index');
 
 Route::post('/createAPost','PostsController@createAPost');
+
+Route::get("/comments", "PostsController@comments");

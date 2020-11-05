@@ -7,7 +7,7 @@
         </div>
         <div class="row justify-content-center" style="padding-top: 10%">
             <h5 class="welcome-title">
-                Enssemle, changeons notre ville !
+                Enssemble, changeons notre ville !
             </h5>
         </div>
         <div class="row justify-content-center" style="padding-top: 35%">
