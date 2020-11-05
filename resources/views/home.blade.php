@@ -4,6 +4,16 @@
 
 @section('content')
     <div class="container">
+        <div class="row">
+            <select class="form-control" id="selectCategorie">
+                <option value="">Toutes les catégories</option>
+                @for ($i = 0; $i < sizeof($categories); $i++)
+                    <option name="category" value={{ $categories[$i]->{'id'} }}>
+                        {{ $categories[$i]->{'name'} }}
+                    </option>
+                @endfor
+            </select>
+        </div>
         @for ($i = 0; $i < sizeof($posts); $i++)
             <div class="row shadow mb-3">
                 <div class="container-feed">
@@ -18,7 +28,7 @@
                                 {{ $posts[$i]->{'votes'} }}
                             </span>
                             <a href="#" class="btn-up-feed btn-feed">
-                                <i class="fas fa-arrow-circle-up fa-lg votes-icone-feed"  style="color: #188035"></i>
+                                <i class="fas fa-arrow-circle-up fa-lg votes-icone-feed" style="color: #188035"></i>
                             </a>
                             <a href="#" class="btn-down-feed btn-feed">
                                 <i class="fas fa-arrow-circle-down fa-lg votes-icone-feed" style="color: #db2323"></i>
@@ -34,6 +44,11 @@
                         </span>
                         {!! $posts[$i]->{'body'} !!}
                     </p>
+                    <p>
+                        <a href="/comments" class="comments-feed">
+                            <i class="fas fa-comments"></i> Voir les commentaires
+                        </a>
+                    </p>
                 </div>
             </div>
         @endfor
@@ -42,7 +57,20 @@
     <script type="text/javascript">
         $(document).ready(function() {
             initialiseSpanVotes();
+
+            $('#selectCategorie').change(function() {
+                // On met en session l'id
+                var idCtg = $(this).val();
+                sessionStorage.setItem("idCtg", idCtg);
+                // On fait la requête
+                var url = "{{ url('/home/') }}/" + idCtg;
+                window.location.replace(url);
+            });
+
+            var lastIdCtg = sessionStorage.getItem("idCtg");
+            $('#selectCategorie').val(lastIdCtg);
         });
+
     </script>
-    
+
 @stop

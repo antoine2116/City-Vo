@@ -63,7 +63,7 @@ function initialiseImportImage() {
         $('#ipt-image')[0].click();
     });
 
-    $('#ipt-image').change(function() {
+    $('#ipt-image').change(function () {
         $('#img-icone').removeClass("fa-cloud-upload-alt");
         $('#img-icone').addClass("fa-check");
         $('#img-icone').css("color", "#24a348");
@@ -99,12 +99,12 @@ function initialiseEditUser() {
 }
 
 function initialiseSpanVotes() {
-    $('.container-feed').each(function() {
+    $('.container-feed').each(function () {
         var elVotes = $(this).find(".votes-feed");
         updateColorsSpan(elVotes);
     });
 
-    $('.fa-arrow-circle-up').click(function() {
+    $('.fa-arrow-circle-up').click(function () {
         var container = $(this).closest(".container-feed");
         var elVotes = container.find(".votes-feed");
         var nbVotes = parseInt(elVotes.text().replace("+", ""));
@@ -112,7 +112,7 @@ function initialiseSpanVotes() {
         updateColorsSpan(elVotes);
     });
 
-    $('.fa-arrow-circle-down').click(function() {
+    $('.fa-arrow-circle-down').click(function () {
         var container = $(this).closest(".container-feed");
         var elVotes = container.find(".votes-feed");
         var nbVotes = parseInt(elVotes.text().replace("+", ""));
@@ -135,4 +135,65 @@ function updateColorsSpan(elVotes) {
         elVotes.css("color", "#3d1505");
         elVotes.text(nbVotes);
     }
+}
+
+///////////////////////////////
+////////// COMMENTS   /////////
+///////////////////////////////
+
+function initialiseSaisieComment() {
+    $('#iptComment').on('keypress', function (e) {
+        if (e.which == 13) {
+            var divInfos = $(this).parent();
+            publishComment(divInfos);
+        }
+    });
+
+    $('#btnComment').click(function () {
+        var divInfos = $(this).parent()
+        publishComment(divInfos);
+    });
+}
+
+function publishComment(divInfos) {
+    // On récupère les infos
+    var date = "A l'instant"
+    var nom = divInfos.find("#iptAuteur").val();
+    var comment = divInfos.find("#iptComment").val();
+
+    // On ajout un élement
+    $(".comments").prepend(
+        `
+        <div class="row pb-2">
+                    <div class="card shadow-sm comment-container">
+                        <div class="col-12 pl-4">
+                            <div class="row">
+                                <p>
+                                    <span class="comment-auteur">
+                                        `+ nom + `
+                                    </span>
+                                    &bull;
+                                    <span class="comment-datespan">
+                                        `+ date + `
+                                    </span>
+                                </p>
+                            </div>
+                            <div class="row">
+                                <p>
+                                `+ comment + `
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        `
+    );
+    saveComment(divInfos);
+
+    // On clear l'input
+    $('#iptComment').val("");
+}
+
+function saveComment(divInfos) {
+    // Fonction ajax si on a le temps
 }

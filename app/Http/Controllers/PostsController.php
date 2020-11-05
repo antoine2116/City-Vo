@@ -51,4 +51,8 @@ class PostsController extends Controller
             return redirect('/createPost')->with('danger',"Erreur lors de l'ajout de votre post :( ");
         }
     }
+
+    public function comments() {
+        return view("postDetails");
+    }
 }
